@@ -1,0 +1,24 @@
+﻿Setup the Local Environments and Test the postman request
+
+
+1.As a First step need to setup the local and test poetry and dependencies are is working and dependencies
+--> Run the sh file inside the path   : ./Local-Setup/commands.sh 
+
+
+
+After that follow these steps to  Check the postman results
+
+
+1. Open Postman.
+
+2. Create a POST request to http://localhost:8001/gateway/ocr.
+
+3. Under Body → Select form-data:
+
+   * Add Key: image_file
+
+   * Type: File
+
+   * Upload an image file.
+
+ 4. Click Send and verify the response.
