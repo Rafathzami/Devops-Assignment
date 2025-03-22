@@ -1,0 +1,5 @@
+image:
+  repository: myrepo/fastapi-gateway
+  tag: latest
+service:
+  port: 8001

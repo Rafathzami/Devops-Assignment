@@ -1,0 +1,5 @@
+apiVersion: v2
+name: kserve-model
+description: A Helm chart for deploying KServe Model Service
+version: 0.1.0
+appVersion: "latest"

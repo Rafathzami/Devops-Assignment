@@ -1,0 +1,59 @@
+﻿Prometheus Metrics:
+
+
+inference_requests_total: A counter that tracks the total number of inference requests.
+
+
+inference_failures_total: A counter that tracks the number of failed inference requests.
+
+
+inference_duration_seconds: A histogram that tracks the duration of each inference (used for latency measurement).
+
+
+inference_successful: A gauge that tracks whether the inference was successful (1 if successful, 0 if failed).
+
+
+Prometheus HTTP Server:
+
+
+start_http_server(8000) starts an HTTP server on port 8000, exposing Prometheus metrics at http://localhost:8000/metrics. Prometheus can scrape this endpoint to collect metrics.
+
+
+Inferences:
+When the model successfully processes an inference, it increments the inference_requests_total and inference_successful metrics, while observing the inference duration with inference_duration_seconds.
+
+
+If an error occurs, the failure counter is incremented, and the success gauge is set to 0.
+
+
+4. Update Prometheus Configuration
+Make sure Prometheus is scraping the /metrics endpoint exposed by your model server. If your model is running on Kubernetes, you can set up a ServiceMonitor for Prometheus to scrape the metrics.
+
+
+5. Verify Metrics Exposure
+Once the model is running, you can verify that Prometheus metrics are being exposed by visiting http://localhost:8000/metrics 
+
+
+ocr_inference_duration_seconds_bucket{le="0.1"} 0
+ocr_inference_duration_seconds_bucket{le="0.2"} 5
+ocr_inference_duration_seconds_bucket{le="0.5"} 10
+ocr_inference_duration_seconds_bucket{le="1.0"} 15
+ocr_inference_duration_seconds_bucket{le="2.0"} 18
+ocr_inference_duration_seconds_bucket{le="5.0"} 20
+ocr_inference_duration_seconds_bucket{le="+Inf"} 20
+ocr_inference_duration_seconds_sum 1.23
+ocr_inference_duration_seconds_count 20
+6. Visualize Metrics in Grafana
+Once Prometheus is scraping the metrics, you can use Grafana to create dashboards that visualize:
+
+
+Total inference requests (ocr_inference_requests_total)
+
+
+Number of failed requests (ocr_inference_failures_total)
+
+
+Inference latency (ocr_inference_duration_seconds)
+
+
+Inference success rate (ocr_inference_successful)

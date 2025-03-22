@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: default
+  namespace: argocd
+spec:
+  description: "Default project for deploying apps"
+  sourceRepos:
+    - 'hhttps://github.com/Rafathzami/Devops-Assignment.git'  
+    - namespace: default
+      server: 'https://kubernetes.default.svc'
+  syncWindows:
+    - kind: Allow
+      schedule: '0 0 * * *'  
