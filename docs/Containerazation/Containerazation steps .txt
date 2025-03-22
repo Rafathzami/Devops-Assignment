@@ -1,0 +1,14 @@
+﻿To Run create the docker images and push it to containers run these files .
+Make sure these files have exec permissions.
+If not run the command chmod +x 
+
+
+
+Fast_api 
+containers/containers/fastapi/fastapi_build.sh
+containers/containers/fastapi/fastapi_push.sh
+
+
+Kserve
+containers/containers/kserve/kserve_build.sh
+containers/containers/kserve/kserver_push.sh

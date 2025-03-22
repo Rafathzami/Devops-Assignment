@@ -1,0 +1,40 @@
+﻿a. Base Images Selection Rationale
+Minimal Images: Use lightweight images like alpine or busybox to reduce size and attack surface 
+
+
+Official Images: Choose trusted official images for reliability and security 
+
+
+Compatibility: Ensure the base image 
+
+
+b. Security Considerations
+Stay Updated: Regularly update base images to include the latest patches. Use vulnerability scanning tools like Trivy or Docker scan.
+
+
+Run as Non-Root: Use the USER directive to avoid running containers as root.
+
+
+Minimize Attack Surface: Use minimal OS base images and multi-stage builds to exclude unnecessary dependencies
+
+
+Secret Management: Use secret management tools like Kubernetes Secrets or HashiCorp Vault to avoid hardcoding sensitive data.
+
+
+Trusted Registries: Use secure, trusted container registries .
+
+
+c. Build Optimization Techniques
+Multi-Stage Builds: Separate build and runtime environments to reduce image size 
+
+
+Efficient Caching: Leverage Docker’s layer caching by organizing Dockerfile commands to install dependencies before copying source code.
+
+
+Minimize Layers: Combine related commands into one RUN statement to reduce layers.
+
+
+Use .dockerignore: Exclude unnecessary files from the container image to reduce size.
+
+
+Optimize Dependencies: Only include production dependencies in the final image using commands like npm prune or pip install --no-dev.

@@ -1,0 +1,31 @@
+﻿1.Install ArgoCD if not 
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+
+
+
+2.Access argocd
+
+
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+
+
+
+
+
+3.Create the custom Resources 
+
+
+kubectl apply -f app-project.yaml
+kubectl apply -f kserve-application.yaml
+kubectl apply -f fastapi-application.yaml
+
+
+
+
+4.Check the applications
+
+
+kubectl get applications -n argocd
