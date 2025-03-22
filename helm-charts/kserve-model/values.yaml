@@ -1,0 +1,5 @@
+image:
+  repository: myrepo/kserve-model
+  tag: latest
+service:
+  port: 8080
