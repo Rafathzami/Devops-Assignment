@@ -35,14 +35,16 @@ For the steps you can refer the txt files in these paths
 5️⃣ Monitoring Setup (Prometheus & Grafana)
 :-docs/Prometheus
 
-
-      REQUEST_COUNT = Counter("inference_requests", "Total Inference Requests")
-      def process_request():
-          REQUEST_COUNT.inc()
  📊 Grafana Dashboard Metrics
-Metric                 PromQL Query
-Total Requestssum : (inference_requests)
+Metric           PromQL Query
+
+Total Requests  - sum(inference_requests) 
+
 Latency : (95th percentile)
+
+
 histogram_quantile(0.95, rate(inference_latency_seconds_bucket[5m]))
+
+
 Error Rate : rate(inference_errors_total[5m])
 
