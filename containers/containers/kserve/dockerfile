@@ -1,0 +1,11 @@
+FROM python:3.9-slim AS builder
+WORKDIR /app
+COPY pyproject.toml poetry.lock model.py ./
+RUN pip install poetry && poetry install --no-dev
+
+
+FROM python:3.9-slim
+WORKDIR /app
+COPY --from=builder /app /app
+COPY . .
+CMD ["python", "model.py"]
